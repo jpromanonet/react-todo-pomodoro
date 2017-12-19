@@ -1,0 +1,91 @@
+body {
+  font-family: sans-serif;
+}
+
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 300px;
+}
+
+.mainContainer {
+  width: 600px;
+  height: 600px;
+}
+
+.todolistTitleWrapper {
+  padding: 10px;
+  background-color: #176a8b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todolistTitle {
+  color: #fff;
+  font-weight: bold;
+  font-size: 20px;
+  flex: 1;
+}
+
+.addNewTask {
+  padding: 15px;
+  background-color: #fff;
+  color: #176a8b;
+  font-weight: bold;
+  border-radius: 7px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.addNewTask:hover {
+  border: 1px solid #fff;
+  background-color: #176a8b;
+  color: #fff;
+}
+
+.newTaskWrapper {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.newTaskInput {
+  width: 400px;
+  padding: 5px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #d8d8d8;
+  font-style: italic;
+  font-size: 16px;
+  transition: all 0.5s;
+}
+
+.newTaskInput:focus {
+  border-color: #176a8b;
+}
+
+.newTaskWrapper .addNewTask {
+  color: #fff;
+  background-color: #176a8b;
+  padding: 15px 51px;
+}
+
+.newTaskWrapper .addNewTask:hover {
+  background-color: #fff;
+  color: #176a8b;
+  border: 1px solid #176a8b;
+}
+
+.listContainer {
+  height: 400px;
+  overflow-y: scroll;
+  padding: 0;
+}
