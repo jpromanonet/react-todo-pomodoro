@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "READ_KEY=WA3BauXjfGjAG5rViK2FiwcbiSIprBhsNx1zTDaFz7fnSV9dZt WRITE_KEY=KXBfpzqQGe9MKwqOG1F2TCSn3BDt3A72sJiVrieieYyW4OR1e8 webpack-dev-server --hot"
+    "dev": "webpack-dev-server --hot",
+    "start": "webpack"
   },
   "dependencies": {
     "classnames": "^2.2.5",

@@ -51,7 +51,7 @@ class App extends React.Component {
 			this.setState({
 				notification: null,
 			});
-		}, 60000);
+		}, 5000);
 	};
 
 	onChange = (e) => {
