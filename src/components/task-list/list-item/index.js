@@ -65,13 +65,13 @@ class ListItem extends React.Component {
 		const minutes = parseInt(moment.duration(item.startedAt.diff(now)).asMinutes());
 
 		if (status === 'In Progress' && minutes <= 0) {
-			status = 'Fail';
+			status = 'Failed';
 		}
 
         return (
-            <li>
+            <li title={status}>
 				<a href='#'>
-					{  ( status !== "Done" && status !== "Fail" )  && <FontAwesome.FaCheck onClick={this.onDone} /> }
+					{  ( status !== "Done" && status !== "Failed" )  && <FontAwesome.FaCheck onClick={this.onDone} /> }
                     <FontAwesome.FaPencil onClick={this.onEdit} />
                     <FontAwesome.FaClose onClick={this.onDelete} />
 				</a>
@@ -83,7 +83,7 @@ class ListItem extends React.Component {
 							</del>
 						</div>
 					:
-						<div className={classNames(styles.task, status === "Fail" && styles.failedTask)}>
+						<div className={classNames(styles.task, status === "Failed" && styles.failedTask)}>
 
 							{
                                 this.state.editing ? (

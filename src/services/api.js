@@ -4,13 +4,17 @@ import config from '../utils/config';
 
 class ApiService {
 	getList = () => {
+		const params = {
+			type_slug: 'lists',
+			sort: '-created_at'
+		};
 		return new Promise((resolve, reject) => {
-			cosmic.getObjects(config, (err, cosmic) => {
+			cosmic.getObjectType(config, params, (err, cosmic) => {
 				if (err) {
 					console.log('err', err);
 					reject(err);
 				} else {
-					const data = cosmic.objects.all ? cosmic.objects.all.filter((i => i.type_slug === 'lists')).map(item => {
+					const data = cosmic.objects.all ? cosmic.objects.all.map(item => {
 						return {
 							id: item._id,
 							slug: item.slug,
