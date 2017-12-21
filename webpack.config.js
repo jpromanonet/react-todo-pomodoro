@@ -101,6 +101,8 @@ const config = {
 	plugins: [
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production'),
+			'process.env.READ_KEY': JSON.stringify(process.env.READ_KEY || ''),
+			'process.env.WRITE_KEY': JSON.stringify(process.env.WRITE_KEY || ''),
 		}),
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, 'index.html'),
