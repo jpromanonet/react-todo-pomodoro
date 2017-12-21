@@ -51,23 +51,11 @@ class ApiService {
 		});
 	};
 
-	startTask = (slug) => {
-		const params = {
+	updateTask = (slug, data) => {
+		const params = Object.assign({}, data, {
 			write_key: config.bucket.write_key,
 			slug,
-			metafields: [
-				{
-					key: 'status',
-					value: 'In Progress',
-					type: 'text',
-				},
-				{
-					key: 'started_at',
-					value: moment().add(25, 'm').format(),
-					type: 'text',
-				},
-			],
-		};
+		});
 
 		return new Promise((resolve, reject) => {
 			cosmic.editObject(config, params, (error, response) => {
@@ -80,10 +68,25 @@ class ApiService {
 		});
 	};
 
+	startTask = (slug) => {
+		return this.updateTask(slug, {
+			metafields: [
+				{
+					key: 'status',
+					value: 'In Progress',
+					type: 'text',
+				},
+				{
+					key: 'started_at',
+					value: moment().add(25, 'm').format(),
+					type: 'text',
+				},
+			]
+		});
+	};
+
 	doneTask = (slug) => {
-		const params = {
-			write_key: config.bucket.write_key,
-			slug,
+		return this.updateTask(slug, {
 			metafields: [
 				{
 					key: 'status',
@@ -91,10 +94,17 @@ class ApiService {
 					type: 'text',
 				},
 			],
+		});
+	};
+
+	deleteTask = (slug) => {
+		const params = {
+			write_key: config.bucket.write_key,
+			slug,
 		};
 
 		return new Promise((resolve, reject) => {
-			cosmic.editObject(config, params, (error, response) => {
+			cosmic.deleteObject(config, params, (error, response) => {
 				if (error) {
 					reject(error);
 				} else {

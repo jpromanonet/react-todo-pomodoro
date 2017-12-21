@@ -1,37 +1,76 @@
-.root {
-  padding: 10px;
-  list-style: none;
+ul li {
+  background: #fff;
+  height: 40px;
+  color: #666;
+  line-height: 40px;
+}
+
+ul li a {
+  display: inline-block;
+  position: absolute;
+  background: #2ecc71;
+  width: 0px;
+  height: 40px;
+  margin-right: 16px;
   color: #fff;
-  margin: 10px 0;
+  text-align: center;
+  text-decoration: none;
+  opacity: 0;
+  -webkit-transition: 0.2s linear;
+  -moz-transition: 0.2s linear;
+  -ms-transition: 0.2s linear;
+  -o-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+ul li:nth-child(2n) {
+  background: #f7f7f7;
+}
+
+ul li:hover a {
+  width: 60px;
+  opacity: 1;
+}
+
+ul li>div {
+  padding-left: 10px;
+  transition: all 0.2s;
+}
+
+ul li:hover>div {
+  padding-left: 70px;
+}
+
+ul li p {
+  margin: 0;
+}
+
+.task {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.statusInitial {
-  background: #1997c6;
-}
-
-.statusProgress {
-  background: #E4D836;
-}
-
-.statusDone {
-  background: #1BC98E;
-}
-
-.statusFail {
-  background: red;
-}
-
-.itemOptions {
-  display: flex;
-}
-
-.itemOptions > * {
-  margin-right: 10px;
-}
-
-.actionBtn {
+.taskAction {
+  text-decoration: underline;
   cursor: pointer;
+}
+
+.failedTask {
+  background-color: red;
+  color: #fff;
+  font-weight: bold;
+}
+
+.taskRightSection {
+  padding-right: 20px;
+}
+
+.editTask {
+  width: 75%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #1abc9c;
+  padding-bottom: 5px;
+  height: 15px;
 }

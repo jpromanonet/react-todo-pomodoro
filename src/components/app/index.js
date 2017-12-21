@@ -1,5 +1,6 @@
 import React from 'react';
 import { ListItem } from '../task-list';
+import * as FontAwesome from 'react-icons/lib/fa';
 
 import ApiService from '../../services/api';
 
@@ -12,6 +13,15 @@ class App extends React.Component {
 		},
 		list: [],
 		showNewTaskInput: false,
+		notification: null,
+	};
+
+	types = {
+		createTask: 'Task has been created!',
+		updateTask: 'Task has been updated!',
+		startTask: 'Task is in progress',
+		doneTask: 'Task is finished',
+		deleteTask: 'Task has been removed from the list',
 	};
 
 	constructor() {
@@ -24,13 +34,24 @@ class App extends React.Component {
 	}
 
 	getData = () => {
-		this.api.getList().then((list) => {
+		return this.api.getList().then((list) => {
 			this.setState({
 				list,
 			}, () => {
 				this.resetForm();
 			});
 		});
+	};
+
+	createNotification = (type) => {
+		this.setState({
+			notification: type,
+		});
+		setTimeout(() => {
+			this.setState({
+				notification: null,
+			});
+		}, 60000);
 	};
 
 	onChange = (e) => {
@@ -44,18 +65,35 @@ class App extends React.Component {
 	onSave = () => {
 		this.api.createTask(this.state.form).then(() => {
 			this.getData();
+			this.createNotification(this.types.createTask);
 		});
 	};
 
 	onStart = (slug) => {
 		this.api.startTask(slug).then(() => {
 			this.getData();
+			this.createNotification(this.types.startTask);
 		});
 	};
 
 	onDone = (slug) => {
 		this.api.doneTask(slug).then(() => {
 			this.getData();
+			this.createNotification(this.types.doneTask);
+		});
+	};
+
+	onUpdate = (title, slug) => {
+		return this.api.updateTask(slug, { title, }).then(() => {
+			this.getData();
+			this.createNotification(this.types.updateTask);
+		});
+	};
+
+	onDelete = (slug) => {
+		this.api.deleteTask(slug).then(() => {
+			this.getData();
+			this.createNotification(this.types.deleteTask);
 		});
 	};
 
@@ -75,36 +113,26 @@ class App extends React.Component {
 	};
 
 	render() {
-		return (
-			<div className={styles.root}>
-				<div className={styles.mainContainer}>
-					<div className={styles.todolistTitleWrapper}>
-						<div className={styles.todolistTitle}>
-							Tasks
+        console.log(this.state.notification);
+        return (
+        	<div>
+				{
+					this.state.notification &&
+						<div className={styles.notification}>
+							<p>{this.state.notification}</p>
 						</div>
-						<div className={styles.addNewTaskWrapper}>
-							<div onClick={this.showNewTaskInput} className={styles.addNewTask}>Add new task</div>
-						</div>
-					</div>
-					{
-						this.state.showNewTaskInput && (
-							<div className={styles.newTaskWrapper}>
-								<div>
-									<input
-										type="text"
-										className={styles.newTaskInput}
-										name="title"
-										placeholder="Enter task title"
-										value={this.state.form.value}
-										onChange={this.onChange}
-									/>
-								</div>
-								<div className={styles.addNewTaskWrapper}>
-									<div onClick={this.onSave} className={styles.addNewTask}>Add</div>
-								</div>
-							</div>
-						)
-					}
+
+				}
+				<div className={styles.list}>
+					<h1>
+						What To Do
+						{
+							this.state.showNewTaskInput && <input name="title" className={styles.newTask} placeholder="Task title" value={this.state.form.title} onChange={this.onChange}/>
+						}
+						<a class='add' href='#'>
+							{!this.state.showNewTaskInput?<FontAwesome.FaPlus onClick={this.showNewTaskInput} /> : <FontAwesome.FaCheck onClick={this.onSave} />}
+						</a>
+					</h1>
 					<ul className={styles.listContainer} >
 						{
 							this.state.list.map((item, key) => (
@@ -113,10 +141,15 @@ class App extends React.Component {
 									item={item}
 									onStart={this.onStart}
 									onDone={this.onDone}
+									onUpdate={this.onUpdate}
+									onDelete={this.onDelete}
 								/>
 							))
 						}
 					</ul>
+				</div>
+				<div className={styles.footer}>
+					Created by <a href="http://simplegant.com" target="_blank">SimpleGant</a> & proudly powered by <a href="https://cosmicjs.com" target="_blank">Cosmic JS</a>
 				</div>
 			</div>
 		);
