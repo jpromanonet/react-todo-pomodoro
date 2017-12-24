@@ -112,6 +112,12 @@ class App extends React.Component {
 		});
 	};
 
+	onKeyPress = (e) => {
+        if (e.key === 'Enter') {
+			this.onSave();
+        }
+	};
+
 	render() {
         console.log(this.state.notification);
         return (
@@ -127,7 +133,7 @@ class App extends React.Component {
 					<h1>
 						What To Do
 						{
-							this.state.showNewTaskInput && <input name="title" className={styles.newTask} placeholder="Task title" value={this.state.form.title} onChange={this.onChange}/>
+							this.state.showNewTaskInput && <input name="title" onKeyPress={this.onKeyPress} className={styles.newTask} autoFocus={true} placeholder="Task title" value={this.state.form.title} onChange={this.onChange}/>
 						}
 						<a class='add' href='#'>
 							{!this.state.showNewTaskInput?<FontAwesome.FaPlus onClick={this.showNewTaskInput} /> : <FontAwesome.FaCheck onClick={this.onSave} />}
@@ -149,7 +155,7 @@ class App extends React.Component {
 					</ul>
 				</div>
 				<div className={styles.footer}>
-					Created by <a href="http://simplegant.com" target="_blank">SimpleGant</a> & proudly powered by <a href="https://cosmicjs.com" target="_blank">Cosmic JS</a>
+					Created by SimpleGant & proudly powered by <a href="https://cosmicjs.com" target="_blank">Cosmic JS</a>
 				</div>
 			</div>
 		);

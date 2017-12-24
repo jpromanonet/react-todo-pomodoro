@@ -4,12 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --hot",
-    "start": "webpack"
+    "clear": "rm -rf static/",
+    "dev": "NODE_ENV=development webpack-dev-server --hot --config ./config/webpack.dev.config.js",
+    "build": "yarn clear && NODE_ENV=production READ_KEY=WA3BauXjfGjAG5rViK2FiwcbiSIprBhsNx1zTDaFz7fnSV9dZt WRITE_KEY=KXBfpzqQGe9MKwqOG1F2TCSn3BDt3A72sJiVrieieYyW4OR1e8 webpack --config ./config/webpack.prod.config.js"
   },
   "dependencies": {
     "classnames": "^2.2.5",
     "cosmicjs": "^2.4.22",
+    "extract-text-webpack-plugin": "^3.0.2",
     "moment": "^2.20.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
