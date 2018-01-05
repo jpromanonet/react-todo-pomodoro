@@ -15,7 +15,8 @@
     "moment": "^2.20.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-icons": "^2.2.7"
+    "react-icons": "^2.2.7",
+    "react-tooltip": "^3.4.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

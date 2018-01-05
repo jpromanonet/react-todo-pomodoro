@@ -1,10 +1,12 @@
 import React from 'react';
 import { ListItem } from '../task-list';
 import * as FontAwesome from 'react-icons/lib/fa';
+import ReactTooltip from 'react-tooltip'
 
 import ApiService from '../../services/api';
 
 import styles from './component.pcss';
+
 
 class App extends React.Component {
 	state = {
@@ -122,6 +124,10 @@ class App extends React.Component {
         console.log(this.state.notification);
         return (
         	<div>
+				<ReactTooltip place="left" delayHide={1000} class="tooltip" effect="solid" html={true} />
+				<FontAwesome.FaInfoCircle data-html={true} data-tip={`
+					Don't forget to do the important things anymore,<br> todo list app will help you to keep the things<br> scheduled and pomodoro timer to keep you focused on what you do. <br>The app is powered by Cosmic JS, more information about it here:
+				`} size="40" color="#fff" style={{position: "fixed", right: 20, top: 20}} />
 				{
 					this.state.notification &&
 						<div className={styles.notification}>
