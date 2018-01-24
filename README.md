@@ -1,6 +1,5 @@
 # React ToDo with Pomodoro Timer
 ![React ToDo with Pomodoro Timer](https://cosmic-s3.imgix.net/96f053a0-013f-11e8-88be-b7a46e521905-react-pomodoro.png?w=1200)
-### [View Demo](https://cosmicjs.com/apps/react-todo-pomodoro)
 Todo list application with pomodoro timer included.  Built using React and [Cosmic JS](https://cosmicjs.com)
 
 ## Install
