@@ -7,19 +7,18 @@
     "clear": "rm -rf static/",
     "dev": "NODE_ENV=development webpack-dev-server --hot --config ./config/webpack.dev.config.js",
     "build": "yarn clear && webpack -p --config ./config/webpack.prod.config.js",
-    "start": "npm run build"
+    "start": "npm run build; node app.js"
   },
   "dependencies": {
     "classnames": "^2.2.5",
     "cosmicjs": "^2.4.22",
+    "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.2",
     "moment": "^2.20.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-icons": "^2.2.7",
-    "react-tooltip": "^3.4.0"
-  },
-  "devDependencies": {
+    "react-tooltip": "^3.4.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
