@@ -126,7 +126,7 @@ class App extends React.Component {
         	<div>
 				<ReactTooltip place="left" delayHide={1000} class="tooltip" effect="solid" html={true} />
 				<FontAwesome.FaInfoCircle data-html={true} data-tip={`
-					Don't forget to do the important things anymore,<br> todo list app will help you to keep the things<br> scheduled and pomodoro timer to keep you focused on what you do. <br>The app is powered by Cosmic JS, more information about it here:
+					Don't forget to do the important things anymore,<br> todo list app will help you to keep the things<br> scheduled and pomodoro timer to keep you focused on what you do. <br>The app is powered by Cosmic JS, more information can be found on their website: https://cosmicjs.com
 				`} size="40" color="#fff" style={{position: "fixed", right: 20, top: 20}} />
 				{
 					this.state.notification &&

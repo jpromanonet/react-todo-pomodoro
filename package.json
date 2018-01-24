@@ -6,7 +6,8 @@
   "scripts": {
     "clear": "rm -rf static/",
     "dev": "NODE_ENV=development webpack-dev-server --hot --config ./config/webpack.dev.config.js",
-    "build": "yarn clear && NODE_ENV=production READ_KEY=WA3BauXjfGjAG5rViK2FiwcbiSIprBhsNx1zTDaFz7fnSV9dZt WRITE_KEY=KXBfpzqQGe9MKwqOG1F2TCSn3BDt3A72sJiVrieieYyW4OR1e8 webpack --config ./config/webpack.prod.config.js"
+    "build": "yarn clear && webpack -p --config ./config/webpack.prod.config.js",
+    "start": "npm run build"
   },
   "dependencies": {
     "classnames": "^2.2.5",
