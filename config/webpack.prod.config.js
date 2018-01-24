@@ -8,7 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 const publicPath = '';
-const outputPath = path.resolve(__dirname, '../');
+const outputPath = path.resolve(__dirname, '../static');
 
 
 module.exports = webpackMerge(baseConfigs, {

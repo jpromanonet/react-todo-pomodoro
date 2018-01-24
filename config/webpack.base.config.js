@@ -3,7 +3,7 @@ const path = require('path');
 
 const publicPath = '/';
 const srcPath = path.join(__dirname, '../src');
-const outputPath = path.resolve(__dirname, '../');
+const outputPath = path.resolve(__dirname, '../static');
 
 
 const config = {
