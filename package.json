@@ -7,7 +7,7 @@
     "clear": "rm -rf static/",
     "dev": "NODE_ENV=development webpack-dev-server --hot --config ./config/webpack.dev.config.js",
     "build": "npm run clear && webpack -p --config ./config/webpack.prod.config.js",
-    "postinstall": "npm run build"
+    "start": "npm run build"
   },
   "dependencies": {
     "classnames": "^2.2.5",
