@@ -16,7 +16,7 @@ http {
     {{ if ne $.NGINX_ROOT "" }}
       root /app/www/{{ $.NGINX_ROOT }};
     {{ else }}
-      root /app/www/static;
+      root /app/www;
     {{ end }}
     index index.html;
     port_in_redirect off;
