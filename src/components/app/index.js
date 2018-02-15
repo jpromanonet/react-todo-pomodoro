@@ -161,7 +161,7 @@ class App extends React.Component {
 					</ul>
 				</div>
 				<div className={styles.footer}>
-					Created by SimpleGant & proudly powered by <a href="https://cosmicjs.com" target="_blank">Cosmic JS</a>
+					Proudly Powered by <a href="https://cosmicjs.com" target="_blank">Cosmic JS</a>
 				</div>
 			</div>
 		);
