@@ -137,7 +137,7 @@ class App extends React.Component {
 				}
 				<div className={styles.list}>
 					<h1>
-						What To Do
+						My pomodoros
 						{
 							this.state.showNewTaskInput && <input name="title" onKeyPress={this.onKeyPress} className={styles.newTask} autoFocus={true} placeholder="Task title" value={this.state.form.title} onChange={this.onChange}/>
 						}
@@ -159,9 +159,6 @@ class App extends React.Component {
 							))
 						}
 					</ul>
-				</div>
-				<div className={styles.footer}>
-					Proudly Powered by <a href="https://cosmicjs.com" target="_blank">Cosmic JS</a>
 				</div>
 			</div>
 		);
